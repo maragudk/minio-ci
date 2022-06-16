@@ -17,5 +17,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Prepare
+        run: docker buildx create --use
+
       - name: Build
         run: docker buildx build --push --no-cache -t "maragudk/minio-ci:latest" --platform=linux/arm64,linux/amd64 .
